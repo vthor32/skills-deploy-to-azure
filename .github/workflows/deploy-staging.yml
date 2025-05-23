@@ -1,0 +1,11 @@
+name: Stage the app
+
+on:
+  pull_request:
+    types: [labeled]  # Aciona o workflow quando um label é adicionado a um PR
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Executa SOMENTE se o PR tiver o label "stage"
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
